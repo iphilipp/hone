@@ -5,13 +5,106 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+		<link rel="stylesheet" href="./style.css" type="text/css">
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-		<title>Hello, world!</title>
+		<title>HONE - Find Your Home Away From Home</title>
 	</head>
 	<body>
-		<h1>Hello, world!</h1>
+		<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+			<div class="container">
+		  		<a class="navbar-brand" href="#"><img src="hone-logo.png" alt="HONE" style="width:115px;"></a>
+		    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		    		<span class="navbar-toggler-icon"></span>
+		    	</button>
+		    	<div class="collapse navbar-collapse" id="navbarCollapse">
+		    		<!-- left navigation links -->
+		    		<form class="form-inline">
+							    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+							    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">🔍</button>
+							</form>
+
+		    		<ul class="navbar-nav mr-auto">
+		    			
+			        	<!-- active navigation link -->
+			        	<li class="nav-item active">
+			        		<a class="nav-link" href="#">Home
+			        		<span class="sr-only">(current)</span>
+			        		</a>
+			        	</li>
+
+				        <!-- regular navigation link -->
+				        <li class="nav-item">
+				        	<a class="nav-link" href="orgs.html">Orgs</a>
+				        </li>
+
+				        <li class="nav-item">
+				        	<a class="nav-link" href="events.html">Events</a>
+				        </li>
+
+				        <!--<li class="nav-item">
+				        	<a class="nav-link" href="#">Orgs</a>
+				        </li>-->
+
+			        	<!-- more navigation links -->
+
+		    		</ul>
+
+		    		<!-- right navigation link -->
+		    		<ul class="nav navbar-nav ml-auto">
+		        		<li class="nav-item">
+		        			<a class="nav-link" href="#">Profile</a>
+		        		</li>
+		        		<li class="nav-item">
+		        			<a class="nav-link" href="#">Login</a>
+		        		</li>
+		      		</ul>
+		    	</div>
+			</div>
+		</nav>
+
+		<div class="container rec">
+			<h3>Recommended For You</h3>
+			<div class="card-deck">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="./img/cover1.jpg" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Chi Omega</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Greek Life: Sorority</h6>
+						<p class="card-text">Chi Omega is a Panhellenic sorority forever committed to its founding purposes of friendship, personal integrity, service to others, academic excellence and intellectual pursuits, community and campus involvement, and personal and career development.</p>
+					</div>
+				</div>
+
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="./img/cover2.jpg" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Sigma Phi Epsilon</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Greek Life: Fraternity</h6>
+						<p class="card-text">Sigma Phi Epsilon, or SigEp, was founded on the three cardinal principles of Virtue, Diligence, and Brotherly Love.</p>
+					</div>
+				</div>
+
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="./img/cover3.jpg" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Phi Delta Epsilon</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Pre-Professional: Medical</h6>
+						<p class="card-text">Description: To prepare our members for a career in medicine and to promote fraternity amongst our members.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container explore">
+			<h3>Explore Campus</h3>
+		</div>
+
+		<div class="container upcoming">
+			<h3>Your Upcoming Events</h3>
+		</div>
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
