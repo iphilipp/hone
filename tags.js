@@ -6,5 +6,8 @@ var tagList = [
 	"greek",
 	"fraternity",
 	"sorority",
-	""
+	"pre-professional",
+    "pre-medicine",
+    "service",
+    "fundraiser"
 ];
