@@ -7,8 +7,27 @@ var orgList = [
 	{"id": 5, "shortName": "snap", "fullName": "Student Network for Analog Photography", "category": "Art", "coverPhoto": "SNAPCover.jpg", "tags": ["", ""], "description": "We want to bring together students in an effort to revive the \"dying\" art that is analog photography. This organization aims to create an open platform for students to develop and build upon skills in film photography. Students will be encouraged to join, regardless of level of experience, in hopes that a network can be created for members to organize photoshoots, share work and learn about early analog technologies in photo development and camera mechanism."},
 	{"id": 6, "shortName": "ucs", "fullName": "Undergraduate Communication Society", "category": "Pre-Professional: Communication", "coverPhoto": "UCSCover.jpg", "tags": ["", ""], "description": "The Undergraduate Communication Society (UCS) is an organization run by and for students interested in communication. The UCS conducts career panels, field trips (in which we are not responsible for member's transportation and utilize public transportation throughout San Diego) and social events for members, often including alumni and guest speakers from the communication field."},
 	{"id": 7, "shortName": "vsa", "fullName": "Vietnamese Student Association", "category": "Cultural", "coverPhoto": "VSACover.jpg", "tags": ["", ""], "description": "To promote and preserve the Vietnamese culture and awareness among the UCSD students through various cultural, social, community, and educational events."},
+<<<<<<< HEAD
 	/* {"id": 8, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
 	{"id": 9, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
 	{"id": 10, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
 	{"id": 11, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""}, */
+=======
+	{"id": 8, "shortName": "aopi", "fullName": "Alpha Omicron Pi", "category": "Greek Life: Sorority", "coverPhoto": "AOPICover.png", "tags": ["", ""], "description": "The object of Alpha Omicron Pi Women’s Fraternity shall be to encourage a spirit of Fraternity and love among its members; to stand at all times for character, dignity, scholarship, and college loyalty; to strive for and support the best interest of the colleges and universities in which chapters are installed, and in no way to disregard, injure, or sacrifice those interests for the sake of prestige or advancement of the Fraternity or any of its chapters."},
+	{"id": 9, "shortName": "aslc", "fullName": "American Sign Language Club", "category": "Cultural", "coverPhoto": "ASLC.jpg", "tags": ["", ""], "description": "The ASL Club strives to promote the use of American Sign Language while spreading awareness of the culture, history, and perspectives of the Deaf and Hard-of-Hearing community. We seek to enhance the education of UCSD students as well as the surrounding community by conducting meetings and events that bring this community together in an open and safe environment that stimulates learning."},
+	/*{"id": 10, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 11, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 12, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 13, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 14, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 15, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 16, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 17, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 18, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 19, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 20, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 21, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 22, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
+	{"id": 23, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""}, */
+>>>>>>> b5521cff886480aa2110d10349256eb8a0c256d6
 ];
