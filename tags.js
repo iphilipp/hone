@@ -1,9 +1,11 @@
 var tagList = [
+	"asian"
 	"business",
 	"communicaation",
 	"community",
 	"cultural",
 	"design",
+	"engineering",
 	"food",
 	"fraternity",
 	"fundraiser",
@@ -15,6 +17,7 @@ var tagList = [
 	"photography",
 	"political",
 	"pre-professional",
+	"real-estate"
 	"service",
 	"social",
 	"sorority",
