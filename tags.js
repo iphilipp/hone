@@ -1,21 +1,22 @@
 var tagList = [
-	"social",
+	"business",
+	"communicaation",
+	"community",
+	"cultural",
+	"design",
 	"food",
+	"fraternity",
+	"fundraiser",
+	"gbm",
+	"greek",
+	"medical",
+	"men",
 	"music",
 	"photography",
-	"greek",
-	"fraternity",
+	"political",
+	"pre-professional",
+	"service",
+	"social",
 	"sorority",
-	"pre-professional"
-	"cultural"
-	"business"
-	"women"
-	"men"
-	"fundraiser"
-	"gbm"
-	"service"
-	"medical"
-	"political"
-	"medical"
-	"communicaation"
+	"women",
 ];
