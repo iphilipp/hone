@@ -1,5 +1,5 @@
 var tagList = [
-	"asian"
+	"asian",
 	"business",
 	"communicaation",
 	"community",

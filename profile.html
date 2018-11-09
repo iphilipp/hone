@@ -18,7 +18,7 @@
 		<meta name="msapplication-TileColor" content="#2b5797">
 		<meta name="theme-color" content="#ffffff">
 
-		<title>HONE - Find Your Home Away From Home</title>
+		<title>Profile</title>
 	</head>
 	<body>
 		<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
@@ -30,20 +30,15 @@
 		    	<div class="collapse navbar-collapse" id="navbarCollapse">
 		    		<!-- left navigation links -->
 		    		<form class="form-inline">
-							    <input class="form-control mr-sm-2" style="max-width: 18rem;" type="search" placeholder="Search" aria-label="Search">
-							    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">🔍</button>
-							</form>
+						<input class="form-control mr-sm-2" style="max-width: 18rem;" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">🔍</button>
+					</form>
 
 		    		<ul class="navbar-nav mr-auto">
-
-			        	<!-- active navigation link -->
-			        	<li class="nav-item active">
-			        		<a class="nav-link" href="#">Home
-			        		<span class="sr-only">(current)</span>
-			        		</a>
+			        	<li class="nav-item">
+			        		<a class="nav-link" href="index.html">Home</a>
 			        	</li>
 
-				        <!-- regular navigation link -->
 				        <li class="nav-item">
 				        	<a class="nav-link" href="orgs.html">Orgs</a>
 				        </li>
@@ -51,20 +46,16 @@
 				        <li class="nav-item">
 				        	<a class="nav-link" href="events.html">Events</a>
 				        </li>
-
-				        <!--<li class="nav-item">
-				        	<a class="nav-link" href="#">Orgs</a>
-				        </li>-->
-
-			        	<!-- more navigation links -->
-
 		    		</ul>
 
-		    		<!-- right navigation link -->
+		    		<!-- right navigation links -->
 		    		<ul class="nav navbar-nav ml-auto">
-		        		<li class="nav-item">
-		        			<a class="nav-link" href="./profile.html">Profile</a>
+		        		<li class="nav-item active">
+		        			<a class="nav-link" href="#">Profile
+		        			<span class="sr-only">(current)</span>
+		        			</a>
 		        		</li>
+		        		
 		        		<script id="logged-in" type="text/x-handlebars-template">
 			        		<li class="nav-item">
 			        			<a id="logout-btn" class="nav-link" href="./profile.html">Logout</a>
@@ -104,85 +95,36 @@
 			</div>
 		</nav>
 
-			<script id="org-card-template" type="x-handlebars-template">
-				<div class="card" style="min-width: 18rem;">
-					<a href="./orgs/{{shortName}}.html">
-						<img class="card-img-top" src="./img/{{coverPhoto}}" alt="{{fullName}} Photo">
-					</a>
-					<div class="card-body">
-						<h5 class="card-title">{{fullName}}</h5>
-						<h6 class="card-subtitle mb-2 text-muted">{{category}}</h6>
-						<!--<p class="card-text"></p>-->
+		<div class="container profile text-center">
+			<script id="logged-in-profile" type="text/x-handlebars-template">
+					<img src="./img/pfp.jpg" class="rounded-circle img-fluid" style="max-width: 75%;">
+					<h3 class="text-center">HONE's Profile</h3>
+
+					<div class="card-deck">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title align-text-bottom">My Tags</h5>
+								<p class="card-text">Change the tags we sort your events by.</p>
+								<a href="./mytags.html" class="btn btn-primary">Change</a>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title align-text-bottom">My Events</h5>
+								<p class="card-text">See what events you've selected.</p>
+								<a href="./myevents.html" class="btn btn-primary">View</a>
+							</div>
+						</div>
 					</div>
-				</div>
 			</script>
-			<script id="event-card-template" type="x-handlebars-template">
-				<div class="card" style="min-width: 18rem; ">
-					<div class="card-body">
-						<h5 class="card-title">{{name}}</h5>
-						<h6 class="card-title">{{hostOrg}}</h6>
-						<h6 class="card-subtitle mb-2 text-muted">{{date}}</h6>
-						<!--<p class="card-text"></p>-->
-						<a href="./event.html?id={{id}}" class="btn btn-primary">Details</a>
-					</div>
-				</div>
+
+			<script id="logged-out-profile" type="x-handlebars-template">
+				<h3 class="text-center">Please Log In Above</h3>
 			</script>
 
-		<div class="container rec" style="padding-top: 75;">
-			<h3>Recommended For You</h3>
-			<h4>Orgs</h4>
-			<div class="card-deck" id="org-rec-deck" style="display: inline-flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; width: 100%;"></div>
-			<h4>Events</h4>
-			<div class="card-deck" id="event-rec-deck" style="display: inline-flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; width: 100%;"></div>
+			<div id="profile-div"></div>
 		</div>
-
-		<div class="container explore">
-			<h3>Explore Campus</h3>
-
-			<div class="card-deck">
-				<div class="card" style="width: 18rem; ">
-					<div class="card-body">
-						<h5 class="card-title align-text-bottom">Organizations</h5>
-						<!--h6 class="card-subtitle mb-2 text-muted">5 November 2018</h6-->
-						<p class="card-text">View all of the different orgs around your campus.</p>
-						<a href="./orgs.html" class="btn btn-primary">Explore</a>
-					</div>
-				</div>
-
-				<div class="card" style="width: 18rem;">
-					<div class="card-body">
-						<h5 class="card-title align-text-bottom">Events</h5>
-						<!--h6 class="card-subtitle mb-2 text-muted">11 November 2018</h6-->
-						<p class="card-text">See what events are happening on campus soon.</p>
-						<a href="./events.html" class="btn btn-primary">Explore</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container upcoming">
-			<h3>Your Upcoming Events</h3>
-			<h5>No Liked Events.</h5>
-			<!--div class="card-deck">
-				<div class="card" style="width: 18rem; ">
-					<div class="card-body">
-						<h5 class="card-title">Make-A-Wish Meet-up</h5>
-						<h6 class="card-title">Chi Omega</h6>
-						<h6 class="card-subtitle mb-2 text-muted">5 November 2018</h6>
-						<p class="card-text"></p>
-					</div>
-				</div>
-
-				<div class="card" style="width: 18rem;">
-					<div class="card-body">
-						<h5 class="card-title">Chapter Meeting</h5>
-						<h6 class="card-title">Sigma Phi Epsilon</h6>
-						<h6 class="card-subtitle">11 November 2018</h6>
-						<p class="card-text"></p>
-					</div>
-				</div>
-			</div>
-		</div-->
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->

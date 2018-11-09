@@ -1,4 +1,3 @@
-
 var orgList = [
 	{"id": 0, "shortName": "chio", "fullName": "Chi Omega", "category": "Greek Life: Sorority", "coverPhoto": "CHIOCover.jpg", "tags": ["greek", "sorority", "social", "women"], "description": "Chi Omega is a Panhellenic sorority forever committed to its founding purposes of friendship, personal integrity, service to others, academic excellence and intellectual pursuits, community and campus involvement, and personal and career development." },
 	{"id": 1, "shortName": "sigep", "fullName": "Sigma Phi Epsilon", "category": "Greek Life: Fraternity", "coverPhoto": "SIGEPCover.jpg", "tags": ["greek", "fraternity", "social", "men"], "description": "Sigma Phi Epsilon, or SigEp, was founded on the three cardinal principles of Virtue, Diligence, and Brotherly Love. The men of SigEp strive to stay proactive and self-sustaining while working with their brothers to build a constantly evolving fraternity."},
@@ -21,17 +20,5 @@ var orgList = [
 	{"id": 18, "shortName": "tt", "fullName": "Theta Tau", "category": "Pre-Professional: Engineering", "coverPhoto": "TTCover.jpg", "tags": ["pre-professional", "engineering"], "description": "The purpose of Theta Tau is to build a strong fraternal bond and maintain high standards of professionalism among fellow members. Theta Tau aims to provide its members the social and professional development necessary to succeed during and after their college years. "},
 	{"id": 19, "shortName": "treo", "fullName": "Triton Real Estate Organization", "category": "Pre-Professional: Real Estate", "coverPhoto": "TREOCover.jpg", "tags": ["pre-professional", "real-estate"], "description": "The purpose of this organization is to promote students' understanding and knowledge in the field of Real Estate. This includes many facets of Real Estate such as property management, investment and development. It also serves to establish and strengthen the network between students and business professionals within our community."},
 	{"id": 21, "shortName": "wib", "fullName": "Women in Business", "category": "Pre-Professional: Business", "coverPhoto": "WIBCover.jpg", "tags": ["pre-professional", "business", "women"], "description": "UCSD Women In Business aims to empower women of all backgrounds to become leaders in today's ever-changing world. Through business education, networking, mentorship, leadership development workshops, and social events, members will have the chance to join a community dedicated to helping one another succeed. By encouraging both professional and personal growth, UCSD WIB will give women pursuing business the chance to affect change not only within themselves and the university, but in the world they seek beyond. "},
-	/*{"id": 22, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 23, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 24, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 25, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 26, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 27, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 28, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 29, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 30, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 31, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 32, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 33, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
-	{"id": 34, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""}, */
+	/*{"id": 22, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},*/
 ];
