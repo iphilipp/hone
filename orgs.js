@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 var orgList = [
 	{"id": 0, "shortName": "chio", "fullName": "Chi Omega", "category": "Greek Life: Sorority", "coverPhoto": "CHIOCover.jpg", "tags": ["greek", "sorority", "social"], "description": "Chi Omega is a Panhellenic sorority forever committed to its founding purposes of friendship, personal integrity, service to others, academic excellence and intellectual pursuits, community and campus involvement, and personal and career development." },
 	{"id": 1, "shortName": "sigep", "fullName": "Sigma Phi Epsilon", "category": "Greek Life: Fraternity", "coverPhoto": "SIGEPCover.jpg", "tags": ["greek", "fraternity", "social"], "description": "Sigma Phi Epsilon, or SigEp, was founded on the three cardinal principles of Virtue, Diligence, and Brotherly Love. The men of SigEp strive to stay proactive and self-sustaining while working with their brothers to build a constantly evolving fraternity."},
@@ -35,3 +37,4 @@ var orgList = [
 	{"id": 33, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
 	{"id": 34, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""}, */
 ];
+>>>>>>> 363bf64072c71f11fe99c25565ae8dc237974afd
