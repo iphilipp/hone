@@ -37,4 +37,3 @@ var orgList = [
 	{"id": 33, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""},
 	{"id": 34, "shortName": "", "fullName": "", "category": "", "coverPhoto": "", "tags": ["", ""], "description": ""}, */
 ];
->>>>>>> 363bf64072c71f11fe99c25565ae8dc237974afd
