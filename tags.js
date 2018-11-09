@@ -6,7 +6,6 @@ var tagList = [
 	"greek",
 	"fraternity",
 	"sorority",
-<<<<<<< HEAD
 	"pre-professional"
 	"cultural"
 	"business"
@@ -19,10 +18,4 @@ var tagList = [
 	"political"
 	"medical"
 	"communicaation"
-=======
-	"pre-professional",
-    "pre-medicine",
-    "service",
-    "fundraiser"
->>>>>>> a792fd29dc739d5487ad6b3cf6528d6ec0c75ba7
 ];
