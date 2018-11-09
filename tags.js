@@ -6,5 +6,16 @@ var tagList = [
 	"greek",
 	"fraternity",
 	"sorority",
-	""
+	"pre-professional"
+	"cultural"
+	"business"
+	"women"
+	"men"
+	"fundraiser"
+	"gbm"
+	"service"
+	"medical"
+	"political"
+	"medical"
+	"communicaation"
 ];
