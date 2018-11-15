@@ -122,7 +122,7 @@ var orgList = [
 $(document).ready(function() {
   console.log('hello world');
 
-  //checks login status each load
+  // THIS PART CHECKS LOGIN STATUS FOR EVERY PAGE
   var login_status = localStorage.getItem("loginStatus");
   if (!login_status) {
     localStorage.setItem("loginStatus", "false");
@@ -141,6 +141,9 @@ $(document).ready(function() {
 
   console.log("login status set");
 
+  // THIS PART LOADS THE RIGHT LOGIN/OUT BUTTON TO THE TOOLBAR
+  // IT ALSO LOADS THE CORRESPONDING PROFILE PAGE IF ON PROFILE.HTML
+
   var loginSource, profileSource;
   if (login_status == "true") {
     loginSource = $("#logged-in").html();
@@ -154,10 +157,10 @@ $(document).ready(function() {
   var template = Handlebars.compile(loginSource);
   var login_div = $("#log-button");
   var html = template();
-
   console.log("login template loaded " + login_status);
-
   login_div.append(html);
+
+
   if(profileSource){
     var template = Handlebars.compile(profileSource);
     var profile_div = $("#profile-div");
@@ -168,8 +171,10 @@ $(document).ready(function() {
     console.log("profile template loaded");
   }
 
-  var filtered_orgs, filtered_events;
 
+  // THIS PART SHOULD POPULATE THE FRONT PAGE WITH EVENTS AND ORGS BASED ON SELECTED TAGS
+
+  var filtered_orgs, filtered_events;
   var my_tags = localStorage.getItem("myTags");
   var matchTags = function(oe) {  //oe = org | event
     var oe_tag_list = oe.tags;
@@ -179,7 +184,7 @@ $(document).ready(function() {
       }
     }
   };
-  if (my_tags) {
+  if ((login_status == "true") && my_tags) {
     filtered_orgs = orgList.filter(matchTags);
     filtered_events = eventList.filter(matchTags);
   }
@@ -208,19 +213,30 @@ $(document).ready(function() {
     }
   }
 
+  // THIS PART FILLS ALL OF THE EVENTS INTO THE EVENTS PAGE
+
   var allEventSource = $("#all-event-card-template").html();
-  if(allEventSource) {
+  var allEventPastSource = $("#all-event-past-card-template").html();
+  if(allEventSource && allEventPastSource) {
     var chrono_events = eventList.sort(function(a, b){
       if(a.date < b.date) {return -1;}
       else {return 1;}
     });
     var template = Handlebars.compile(allEventSource);
+    var templatePast = Handlebars.compile(allEventPastSource);
+
     var event_div = $("#event-deck");
+    var past_event_div = $("#past-event-deck");
     for(var i = 0; i < chrono_events.length; i++){
+      
       var html = template(chrono_events[i]);
       event_div.append(html);
     }
   }
+
+
+  // THIS PART SHOULD ALLOW YOU TO SELECT WHICH TAGS YOU WANT TO SORT WITH IN YOUR PROFILE
+  // LOCALSTORAGE PART OF THIS NOT YET IMPLEMENTED
 
   if(my_tags){  //if any preferences selscted
     var btn0Source = $("#tag-unsel-template").html();
@@ -253,6 +269,11 @@ $(document).ready(function() {
       }
     }
   }
+
+
+
+// THIS PART SHOULD MAKE LOGIN/OUT AND SEARCH AREAS WORK... THEY DON'T RIGHT NOW
+
   // use localStorage to toggle login status
   $("#login-btn").click(function() {
       localStorage.setItem("loginStatus", "true");
@@ -271,13 +292,9 @@ $(document).ready(function() {
     window.location="./search.html?tags="+query;
   });
 
-    // END - STEP 2
 
 
-  // BEGIN - STEP 3
-
-  // Use the URLSearchParams API to make fake-database queries using a URL
-  // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+  // FILL GENERIC EVENT TEMPLATE PAGE WITH RELAVENT DATA
   var queryParams = new URLSearchParams(window.location.search);
   var eventID = queryParams.get('id');
   var eventData = eventList[eventID];
@@ -298,17 +315,5 @@ $(document).ready(function() {
     var html = tagTemplate(eventData);
     pgTagDiv.append(html);
   }
-  //console.log('query for', projectTitle);
-
-  // to get this to work like in class, comment out the "STEP 1" parts
-  // above between BEGIN and END.
-  /*for (var i = 0; i < complexData.length; i++) {
-    var curData = complexData[i];
-    if (curData.title == projectTitle) {
-      var curHtml = template(curData);
-      parentDiv.append(curHtml);
-    }
-  } */
-
-  // END - STEP 3
+  
 });
