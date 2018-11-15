@@ -208,13 +208,13 @@ $(document).ready(function() {
     }
   }
 
-  var eventSource = $("#all-event-card-template").html();
-  if(eventSource) {
+  var allEventSource = $("#all-event-card-template").html();
+  if(allEventSource) {
     var chrono_events = eventList.sort(function(a, b){
       if(a.date < b.date) {return -1;}
       else {return 1;}
     });
-    var template = Handlebars.compile(eventSource);
+    var template = Handlebars.compile(allEventSource);
     var event_div = $("#event-deck");
     for(var i = 0; i < chrono_events.length; i++){
       var html = template(chrono_events[i]);
@@ -276,6 +276,18 @@ $(document).ready(function() {
   // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
   var queryParams = new URLSearchParams(window.location.search);
   var eventID = queryParams.get('id');
+  var eventData = eventList[eventID];
+  var pgDiv = $("#event-page-div");
+  if(pgDiv && eventData) {
+    var eventTemplate = Handlebars.compile($("#event-page-template").html());
+    var html = eventTemplate(eventData);
+    pgDiv.append(html);
+  }
+  else if(pgDiv && !eventData) {
+    var eventTemplate = Handlebars.compile($("#event-dne-page-template").html());
+    var html = eventTemplate(eventData);
+    pgDiv.append(html);
+  }
   //console.log('query for', projectTitle);
 
   // to get this to work like in class, comment out the "STEP 1" parts
