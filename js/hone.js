@@ -225,28 +225,32 @@ $(document).ready(function() {
   if(my_tags){  //if any preferences selscted
     var btn0Source = $("#tag-unsel-template").html();
     var btn1Source = $("#tag-presel-template").html();
-    var template0 = Handlebars.compile(btn0Source);
-    var template1 = Handlebars.compile(btn1Source)
-    var tags_div = $("#tags-div");
-    for(var i = 0; i < tagList.length; i++){
-      for(var j = 0; j < my_tags.length; j++) {
-        if(tagList[i].tag == my_tags[j].tag) {
-          var html = template1(tagList[i]);
-          tags_div.append(html);
-          break;
+    if(btn0Source && btn1Source){
+      var template0 = Handlebars.compile(btn0Source);
+      var template1 = Handlebars.compile(btn1Source)
+      var tags_div = $("#tags-div");
+      for(var i = 0; i < tagList.length; i++){
+        for(var j = 0; j < my_tags.length; j++) {
+          if(tagList[i].tag == my_tags[j].tag) {
+            var html = template1(tagList[i]);
+            tags_div.append(html);
+            break;
+          }
         }
+        var html = template0(tagList[i]);
+        tags_div.append(html);
       }
-      var html = template0(tagList[i]);
-      tags_div.append(html);
     }
   }
   else {  //if no tags selected yet
     var btnSource = $("#tag-unsel-template").html();
-    var template = Handlebars.compile(btnSource);
-    var tags_div = $("#tags-div");
-    for(var i = 0; i < tagList.length; i++){
-      var html = template(tagList[i]);
-      tags_div.append(html);
+    if(btnSource) {
+      var template = Handlebars.compile(btnSource);
+      var tags_div = $("#tags-div");
+      for(var i = 0; i < tagList.length; i++){
+        var html = template(tagList[i]);
+        tags_div.append(html);
+      }
     }
   }
   // use localStorage to toggle login status
@@ -288,17 +292,23 @@ $(document).ready(function() {
     var html = eventTemplate(eventData);
     pgDiv.append(html);
   }
+  var pgTagDiv = $("#event-tag-div");
+  if(pgTagDiv) {
+    var tagTemplate = Handlebars.compile($("#event-tag-template").html());
+    var html = tagTemplate(eventData);
+    pgTagDiv.append(html);
+  }
   //console.log('query for', projectTitle);
 
   // to get this to work like in class, comment out the "STEP 1" parts
   // above between BEGIN and END.
-  for (var i = 0; i < complexData.length; i++) {
+  /*for (var i = 0; i < complexData.length; i++) {
     var curData = complexData[i];
     if (curData.title == projectTitle) {
       var curHtml = template(curData);
       parentDiv.append(curHtml);
     }
-  }
+  } */
 
   // END - STEP 3
 });
