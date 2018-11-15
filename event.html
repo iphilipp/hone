@@ -18,7 +18,7 @@
 		<meta name="msapplication-TileColor" content="#2b5797">
 		<meta name="theme-color" content="#ffffff">
 
-		<title>My Tags</title>
+		<title>Event Details</title>
 	</head>
 	<body>
 		<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
@@ -97,15 +97,15 @@
 			<h3>Choose which tags we'll use to find orgs and events for you.</h3>
 
 			<script id="tag-presel-template" type="text/x-handlebars-template">
-				<label class="btn btn-secondary btn-lg mb-1 active"><input type="checkbox" name="options" id="option{{id}}" checked autocomplete="off">{{tag}}</label>
+				<label class="btn btn-secondary mb-1 active"><input type="checkbox" name="options" id="option{{id}}" checked autocomplete="off">{{tag}}</label>
 			</script>
 			<script id="tag-unsel-template" type="text/x-handlebars-template">
-				<label class="btn btn-secondary btn-lg mb-1"><input type="checkbox" name="options" id="option{{id}}" autocomplete="off">{{tag}}</label>
+				<label class="btn btn-secondary mb-1"><input type="checkbox" name="options" id="option{{id}}" autocomplete="off">{{tag}}</label>
 			</script>
 
 			<div id= "tags-div" class="btn-group-toggle flex-wrap" data-toggle="buttons"></div>
 
-			<button type="submit" class="btn btn-primary float-right btn-lg mt-3">Save Tags</button>
+			<button type="submit" class="btn btn-primary mt-3">Save Tags</button>
 
 		</div>
 

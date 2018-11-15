@@ -1,28 +1,28 @@
 //fake databases
 var tagList = [
-  {"id": 0, "tag": "asian"},
-  {"id": 1, "tag": "business"},
-  {"id": 2, "tag":"communication"},
-  {"id": 3, "tag": "community"},
-  {"id": 4, "tag": "cultural"},
-  {"id": 5, "tag": "design"},
-  {"id": 6, "tag": "engineering"},
-  {"id": 7, "tag": "food"},
-  {"id": 8, "tag": "fraternity"},
-  {"id": 9, "tag": "fundraiser"},
-  {"id": 10, "tag": "gbm"},
-  {"id": 11, "tag": "greek"},
-  {"id": 12, "tag": "medical"},
-  {"id": 13, "tag": "men"},
-  {"id": 14, "tag": "music"},
-  {"id": 15, "tag": "photography"},
-  {"id": 16, "tag": "political"},
-  {"id": 17, "tag": "pre-professional"},
-  {"id": 18, "tag": "real-estate"},
-  {"id": 19, "tag": "service"},
-  {"id": 20, "tag": "social"},
-  {"id": 21, "tag": "sorority"},
-  {"id": 22, "tag": "women"},
+  {"tag": "asian"},
+  {"tag": "business"},
+  {"tag":"communication"},
+  {"tag": "community"},
+  {"tag": "cultural"},
+  {"tag": "design"},
+  {"tag": "engineering"},
+  {"tag": "food"},
+  {"tag": "fraternity"},
+  {"tag": "fundraiser"},
+  {"tag": "gbm"},
+  {"tag": "greek"},
+  {"tag": "medical"},
+  {"tag": "men"},
+  {"tag": "music"},
+  {"tag": "photography"},
+  {"tag": "political"},
+  {"tag": "pre-professional"},
+  {"tag": "real-estate"},
+  {"tag": "service"},
+  {"tag": "social"},
+  {"tag": "sorority"},
+  {"tag": "women"},
 ];
 
 var eventList = [
@@ -208,6 +208,20 @@ $(document).ready(function() {
     }
   }
 
+  var eventSource = $("#all-event-card-template").html();
+  if(eventSource) {
+    var chrono_events = eventList.sort(function(a, b){
+      if(a.date < b.date) {return -1;}
+      else {return 1;}
+    });
+    var template = Handlebars.compile(eventSource);
+    var event_div = $("#event-deck");
+    for(var i = 0; i < chrono_events.length; i++){
+      var html = template(chrono_events[i]);
+      event_div.append(html);
+    }
+  }
+
   if(my_tags){  //if any preferences selscted
     var btn0Source = $("#tag-unsel-template").html();
     var btn1Source = $("#tag-presel-template").html();
@@ -261,8 +275,8 @@ $(document).ready(function() {
   // Use the URLSearchParams API to make fake-database queries using a URL
   // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
   var queryParams = new URLSearchParams(window.location.search);
-  var projectTitle = queryParams.get('project');
-  console.log('query for', projectTitle);
+  var eventID = queryParams.get('id');
+  //console.log('query for', projectTitle);
 
   // to get this to work like in class, comment out the "STEP 1" parts
   // above between BEGIN and END.
