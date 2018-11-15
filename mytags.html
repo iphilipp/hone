@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
 
 		<link rel="stylesheet" href="./style.css" type="text/css">
 
@@ -18,7 +18,7 @@
 		<meta name="msapplication-TileColor" content="#2b5797">
 		<meta name="theme-color" content="#ffffff">
 
-		<title>Profile</title>
+		<title>My Tags</title>
 	</head>
 	<body>
 		<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
@@ -50,15 +50,13 @@
 
 		    		<!-- right navigation links -->
 		    		<ul class="nav navbar-nav ml-auto">
-		        		<li class="nav-item active">
-		        			<a class="nav-link" href="#">Profile
-		        			<span class="sr-only">(current)</span>
-		        			</a>
+		        		<li class="nav-item">
+		        			<a class="nav-link" href="./profile.html">Profile</a>
 		        		</li>
 		        		
 		        		<script id="logged-in" type="text/x-handlebars-template">
 			        		<li class="nav-item">
-			        			<a id="logout-btn" class="nav-link" href="./profile.html">Logout</a>
+			        			<a id="logout-btn" class="nav-link" href="./mytags.html">Logout</a>
 			        		</li>
 		        		</script>
 
@@ -95,39 +93,22 @@
 			</div>
 		</nav>
 
-		<div class="container profile text-center">
-			<script id="logged-in-profile" type="text/x-handlebars-template">
-					<img src="./img/pfp.jpg" class="rounded-circle img-fluid" style="max-width: 75%;">
-					<h3 class="text-center">HONE's Profile</h3>
+		<div class="container mytags">
+			<h3>Choose which tags we'll use to find orgs and events for you.</h3>
 
-					<div class="card-deck">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title align-text-bottom">My Tags</h5>
-								<p class="card-text">Change the tags we sort your events by.</p>
-								<a href="./mytags.html" class="btn btn-primary">Change</a>
-							</div>
-						</div>
-
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title align-text-bottom">My Events</h5>
-								<p class="card-text">See what events you've selected.</p>
-								<a href="./myevents.html" class="btn btn-primary">View</a>
-							</div>
-						</div>
-					</div>
+			<script id="tag-presel-template" type="text/x-handlebars-template">
+				<label class="btn btn-secondary mb-1 active"><input type="checkbox" name="options" id="option{{id}}" checked autocomplete="off">{{tag}}</label>
+			</script>
+			<script id="tag-unsel-template" type="text/x-handlebars-template">
+				<label class="btn btn-secondary mb-1"><input type="checkbox" name="options" id="option{{id}}" autocomplete="off">{{tag}}</label>
 			</script>
 
-			<script id="logged-out-profile" type="text/x-handlebars-template">
-				<h3 class="text-center">Please Log In Above</h3>
-			</script>
+			<div id= "tags-div" class="btn-group-toggle flex-wrap" data-toggle="buttons"></div>
 
-			<div id="profile-div"></div>
+			<button type="submit" class="btn btn-primary mt-3">Save Tags</button>
+
 		</div>
 
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

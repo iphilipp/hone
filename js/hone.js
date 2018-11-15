@@ -1,28 +1,28 @@
 //fake databases
 var tagList = [
-  "asian",
-  "business",
-  "communicaation",
-  "community",
-  "cultural",
-  "design",
-  "engineering",
-  "food",
-  "fraternity",
-  "fundraiser",
-  "gbm",
-  "greek",
-  "medical",
-  "men",
-  "music",
-  "photography",
-  "political",
-  "pre-professional",
-  "real-estate",
-  "service",
-  "social",
-  "sorority",
-  "women",
+  {"id": 0, "tag": "asian"},
+  {"id": 1, "tag": "business"},
+  {"id": 2, "tag":"communication"},
+  {"id": 3, "tag": "community"},
+  {"id": 4, "tag": "cultural"},
+  {"id": 5, "tag": "design"},
+  {"id": 6, "tag": "engineering"},
+  {"id": 7, "tag": "food"},
+  {"id": 8, "tag": "fraternity"},
+  {"id": 9, "tag": "fundraiser"},
+  {"id": 10, "tag": "gbm"},
+  {"id": 11, "tag": "greek"},
+  {"id": 12, "tag": "medical"},
+  {"id": 13, "tag": "men"},
+  {"id": 14, "tag": "music"},
+  {"id": 15, "tag": "photography"},
+  {"id": 16, "tag": "political"},
+  {"id": 17, "tag": "pre-professional"},
+  {"id": 18, "tag": "real-estate"},
+  {"id": 19, "tag": "service"},
+  {"id": 20, "tag": "social"},
+  {"id": 21, "tag": "sorority"},
+  {"id": 22, "tag": "women"},
 ];
 
 var eventList = [
@@ -171,13 +171,17 @@ $(document).ready(function() {
   var filtered_orgs, filtered_events;
 
   var my_tags = localStorage.getItem("myTags");
+  var matchTags = function(oe) {  //oe = org | event
+    var oe_tag_list = oe.tags;
+    for(var i = 0; i < oe_tag_list.length; i++) {
+      for(var j = 0; j < my_tags.length; j++) {
+        return oe_tag_list[i] == my_tags[i].tag;
+      }
+    }
+  };
   if (my_tags) {
-    filtered_orgs = orgList.filter(function(x){
-      return (x.tags).some(r => my_tags.includes(r));
-    });
-    filtered_events = eventList.filter(function(x){
-      return (x.tags).some(r => my_tags.includes(r));
-    });
+    filtered_orgs = orgList.filter(matchTags);
+    filtered_events = eventList.filter(matchTags);
   }
   else {
     filtered_orgs = orgList;
@@ -185,34 +189,52 @@ $(document).ready(function() {
   }
 
   var orgSource = $("#org-card-template").html();
-  var template = Handlebars.compile(orgSource);
-  var org_div = $("#org-rec-deck");
-  for(var i = 0; i < filtered_orgs.length; i++){
-    var html = template(filtered_orgs[i]);
-    org_div.append(html);
+  if(orgSource) {
+    var template = Handlebars.compile(orgSource);
+    var org_div = $("#org-rec-deck");
+    for(var i = 0; i < filtered_orgs.length; i++){
+      var html = template(filtered_orgs[i]);
+      org_div.append(html);
+    }
   }
   
   var eventSource = $("#event-card-template").html();
-  var template = Handlebars.compile(eventSource);
-  var event_div = $("#event-rec-deck");
-  for(var i = 0; i < filtered_events.length; i++){
-    var html = template(filtered_events[i]);
-    event_div.append(html);
+  if(eventSource) {
+    var template = Handlebars.compile(eventSource);
+    var event_div = $("#event-rec-deck");
+    for(var i = 0; i < filtered_events.length; i++){
+      var html = template(filtered_events[i]);
+      event_div.append(html);
+    }
   }
 
-
-
-  /*var html = template(simpleData);
-  console.log(html);
-  parentDiv.append(html);*/
-
-  // now iterate through the complexData list and keep appending:
-  for (var i = 0; i < complexData.length; i++) {
-    var curData = complexData[i];
-    var curHtml = template(curData);
-    parentDiv.append(curHtml);
+  if(my_tags){  //if any preferences selscted
+    var btn0Source = $("#tag-unsel-template").html();
+    var btn1Source = $("#tag-presel-template").html();
+    var template0 = Handlebars.compile(btn0Source);
+    var template1 = Handlebars.compile(btn1Source)
+    var tags_div = $("#tags-div");
+    for(var i = 0; i < tagList.length; i++){
+      for(var j = 0; j < my_tags.length; j++) {
+        if(tagList[i].tag == my_tags[j].tag) {
+          var html = template1(tagList[i]);
+          tags_div.append(html);
+          break;
+        }
+      }
+      var html = template0(tagList[i]);
+      tags_div.append(html);
+    }
   }
-
+  else {  //if no tags selected yet
+    var btnSource = $("#tag-unsel-template").html();
+    var template = Handlebars.compile(btnSource);
+    var tags_div = $("#tags-div");
+    for(var i = 0; i < tagList.length; i++){
+      var html = template(tagList[i]);
+      tags_div.append(html);
+    }
+  }
   // use localStorage to toggle login status
   $("#login-btn").click(function() {
       localStorage.setItem("loginStatus", "true");
@@ -223,6 +245,12 @@ $(document).ready(function() {
       console.log("Logout clicked");
       localStorage.setItem("loginStatus", "false");
       login_status = "false";
+  });
+  //$("search-field").val()
+  $("#search-btn").click(function() {
+    var query = $("#search-field").val();
+    console.log(query);
+    window.location="./search.html?tags="+query;
   });
 
     // END - STEP 2
