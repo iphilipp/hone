@@ -95,14 +95,23 @@
 
 		<script id="event-page-template" type="text/x-handlebars-template">
 			<h1>{{name}}</h1>
-			<h4>
-
+			<h4>{{hostOrg}}</h4>
+			<h6 class="text-muted">{{printDate}}</h6>
+			<p>{{description}}</p>
 		</script>
 		<script id="event-dne-page-template" type="text/x-handlebars-template">
 			<h3>Sorry... this event doesn't exist.</h3>
 		</script>
+		<script id="event-tag-template" type="text/x-handlebars-template">
+			{{#each tags}}
+			<a role="button" class="btn btn-secondary" href="./search.html?tags={{this}}">{{this}}</a>
+			{{/each}}
+		</script>
 
 		<div class="container event text-center" id="event-page-div"></div>
+		<div class="text-center">
+			<div class="btn group" role="group" id="event-tag-div"></div>
+		</div>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
