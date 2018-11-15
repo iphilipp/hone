@@ -93,10 +93,21 @@
 			</div>
 		</nav>
 
+		<script id="all-event-card-template" type="text/x-handlebars-template">
+			<div class="card" style="min-width: 18rem; ">
+				<div class="card-body">
+					<h5 class="card-title">{{name}}</h5>
+					<h6 class="card-title">{{hostOrg}}</h6>
+					<h6 class="card-subtitle mb-2 text-muted">{{date}}</h6>
+					<!--<p class="card-text"></p>-->
+					<a href="./event.html?id={{id}}" class="btn btn-primary">Details</a>
+				</div>
+			</div>
+		</script>
 		<div class="container rec" style="padding-top: 75;">
 			<h3>Upcoming Events</h3>
-			<div class="card-deck">
-				<div class="card" style="width: 18rem;">
+			<div class="card-deck" id="event-deck">
+				<!--div class="card" style="width: 18rem;">
 					<div class="card-body">
 						<h5 class="card-title">Make-A-Wish Meet-up</h5>
 						<h6 class="card-title">Chi Omega</h6>
@@ -121,12 +132,12 @@
 						<h6 class="card-subtitle mb-2 text-muted">29 November 2018</h6>
 						<p class="card-text"></p>
 					</div>
-				</div>
+				</div-->
 			</div>
 
 			<h3>Past Events</h3>
 			<div class="card-deck">
-				<div class="card bg-light" style="width: 18rem;">
+				<!--div class="card bg-light" style="width: 18rem;">
 					<div class="card-body">
 						<h5 class="card-title">Rush Week</h5>
 						<h6 class="card-title">Chi Omega</h6>
@@ -134,7 +145,7 @@
 						<p class="card-text"></p>
 					</div>
 				</div>
-			</div>
+			</div-->
 		</div>
 
 		<!-- Optional JavaScript -->
