@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
 
 		<link rel="stylesheet" href="./style.css" type="text/css">
 
@@ -87,7 +87,7 @@
 		
 		<script id="org-card-template" type="text/x-handlebars-template">
 				<div class="card" style="min-width: 18rem;">
-					<a href="./orgs/{{shortName}}.html">
+					<a href="./org.html?oid={{id}}">
 						<img class="card-img-top" src="./img/{{coverPhoto}}" alt="{{fullName}} Photo">
 					</a>
 					<div class="card-body">
@@ -110,6 +110,7 @@
 			</script>
 
 		<div class="container search">
+			<h3 class="text-center">Search only works with exact tags separated by spaces.</h3>
 			<h4>Orgs</h4>
 			<div class="card-deck" id="org-search-deck" style="display: inline-flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; width: 100%;"></div>
 			<h4>Events</h4>

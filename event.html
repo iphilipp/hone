@@ -100,8 +100,21 @@
 			{{/each}}
 		</script>
 
-		<div class="container event text-center" id="event-page-div"></div>
-		<div class="text-center"><div class="btn-group" role="group" id="event-tag-div"></div></div>
+			<!--label id="rsvp-btn" class="btn btn-success"><input type="checkbox">RSVP</label-->
+		<script id="rsvp-btn-template" type="text/x-handlebars-template">
+			<button id="rsvp-btn" type="button" class="btn btn-success">RSVP</button>
+		</script>
+			<!--label id="unrsvp-btn" class="btn btn-danger"><input type="checkbox"><s>RSVP</s></label-->
+		<script id="unrsvp-btn-template" type="text/x-handlebars-template">
+			<button id="unrsvp-btn" type="button" class="btn btn-danger"><s>RSVP</s></button>
+		</script>
+
+		<div class="container event">
+			<div class="text-center" id="event-page-div"></div>
+			<div class="text-center"><div class="btn-group" role="group" id="event-tag-div"></div></div>
+			<div id="rsvp-btn-div" class="btn-group-toggle float-right" data-toggle="buttons"></div>
+		</div>
+
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

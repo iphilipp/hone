@@ -172,10 +172,20 @@ $(document).ready(function() {
   }
 
 
-  // THIS PART SHOULD POPULATE THE FRONT PAGE WITH EVENTS AND ORGS BASED ON SELECTED TAGS
+  // THIS PART POPULATES THE FRONT PAGE WITH EVENTS AND ORGS BASED ON SELECTED TAGS
 
   var filtered_orgs, filtered_events;
   var my_tags = JSON.parse(localStorage.getItem("myTags"));
+  var my_events = JSON.parse(localStorage.getItem("myEvents"));
+  if(!my_events) {
+    my_events = "["
+    for(var i = 0; i < eventList.length; i++) {
+      my_events += "{\"saved\":false},";
+    }
+    my_events = my_events.substring(0, my_events.length-1) + "]";
+    my_events = JSON.parse(my_events);
+  }
+  
   var matchTags = function(oe) {  //oe = org | event
     var oe_tag_list = oe.tags;
     //console.log(oe_tag_list);
@@ -188,6 +198,7 @@ $(document).ready(function() {
     }
     return false;
   };
+
   if ((login_status == "true") && my_tags) {
     filtered_orgs = orgList.filter(matchTags);
     filtered_events = eventList.filter(matchTags);
@@ -215,17 +226,26 @@ $(document).ready(function() {
       var html = template(filtered_events[i]);
       event_div.append(html);
     }
+    var your_events_div = $("#your-events-div");
+    for(var i = 0; i < eventList.length; i++) {
+      if(my_events[i].saved) {
+        var html = template(eventList[i]);
+        your_events_div.append(html);
+      }
+    }
   }
+
 
   // THIS PART FILLS ALL OF THE EVENTS INTO THE EVENTS PAGE
 
   var allEventSource = $("#all-event-card-template").html();
   var allEventPastSource = $("#all-event-past-card-template").html();
-  if(allEventSource && allEventPastSource) {
-    var chrono_events = eventList.sort(function(a, b){
+  var chrono_events = eventList.sort(function(a, b){
       if(a.date < b.date) {return -1;}
       else {return 1;}
     });
+
+  if(allEventSource && allEventPastSource) {
     var template = Handlebars.compile(allEventSource);
     var templatePast = Handlebars.compile(allEventPastSource);
 
@@ -280,6 +300,20 @@ $(document).ready(function() {
     }
   }
 
+  // THIS PART POPULATES THE MYEVENTS PAGE
+
+  var myEventSource = $("#my-event-template").html();
+  if(myEventSource) {
+    var template = Handlebars.compile(myEventSource);
+    var my_events_div = $("#my-events-div");
+    for(var i = 0; i < eventList.length; i++) {
+      if(my_events[i].saved) {
+        var html = template(eventList[i]);
+        my_events_div.append(html);
+      }
+    }
+  }
+
   // THIS PART MAKES LOGIN/OUT AND SEARCH AREAS WORK
 
   // use localStorage to toggle login status
@@ -322,6 +356,50 @@ $(document).ready(function() {
     console.log(localStorage.getItem("myTags"));
   });
 
+  // FILL GENERIC ORG TEMPLATE PAGE WITH RELAVENT DATA
+
+  var queryParams = new URLSearchParams(window.location.search);
+  var orgID = queryParams.get('oid');
+  var orgData = orgList[orgID];
+
+  var orgInfoSource = $("#org-info-template").html();
+  var orgTagSource = $("#org-tag-template").html();
+  var orgEventSource = $("#org-event-card-template").html();
+  var orgEventPastSource = $("#org-event-past-card-template").html();
+  var orgPicSource = $("#org-pic-template").html();
+
+  var orgInfoDiv = $("#org-info-div");
+  var orgTagDiv = $("#org-tag-div");
+  var orgEventDiv = $("#org-event-deck");
+  var orgEventPastDiv = $("#org-event-past-deck");
+  var orgPicDiv = $("#org-pic-div");
+
+  if(orgInfoSource && orgTagSource && orgEventSource && orgEventPastSource && orgPicSource) {
+    var t1 = Handlebars.compile(orgInfoSource);
+    var t2 = Handlebars.compile(orgTagSource);
+    var t3 = Handlebars.compile(orgEventSource);
+    var t4 = Handlebars.compile(orgEventPastSource);
+    var t5 = Handlebars.compile(orgPicSource);
+
+    orgInfoDiv.append(t1(orgData));
+    orgTagDiv.append(t2(orgData));
+    var d = new Date();
+    for(var i = 0; i < chrono_events.length; i++) {
+      if(chrono_events[i].hostOrg == orgData.fullName) {
+        if(chrono_events[i].date > (d.toJSON()).substring(0,16)) {
+          orgEventDiv.append(t3(chrono_events[i]));
+        }
+        else {
+         orgEventPastDiv.append(t4(chrono_events[i]));
+        }
+      }
+    }
+    
+    orgPicDiv.append(t5(orgData));
+  }
+
+
+
   // FILL GENERIC EVENT TEMPLATE PAGE WITH RELAVENT DATA
 
   var queryParams = new URLSearchParams(window.location.search);
@@ -342,17 +420,48 @@ $(document).ready(function() {
     eventPageDiv.append(html);
   }
   var pgTagDiv = $("#event-tag-div");
-  var eventTagSource = $("#event-tag-template").html()
+  var eventTagSource = $("#event-tag-template").html();
   if(eventTagSource) {
     var tagTemplate = Handlebars.compile(eventTagSource);
     var html = tagTemplate(eventData);
     pgTagDiv.append(html);
   }
 
+  //injects rsvp or unrsvp button
+  var rsvpBtnDiv = $("#rsvp-btn-div");
+  var rsvpBtnSource = $("#rsvp-btn-template").html();
+  var unRsvpBtnSource = $("#unrsvp-btn-template").html();
+  if(rsvpBtnSource && unRsvpBtnSource) {
+    if(my_events[eventID].saved) {
+      rsvpBtnDiv.append(unRsvpBtnSource);
+    }
+    else {
+      rsvpBtnDiv.append(rsvpBtnSource);
+    }
+  }
+
+  $("#rsvp-btn").click(function(){
+    my_events[eventID].saved = true;
+    localStorage.setItem("myEvents", JSON.stringify(my_events));
+    window.location.reload();
+    });
+  $("#unrsvp-btn").click(function(){
+    my_events[eventID].saved = false;
+    localStorage.setItem("myEvents", JSON.stringify(my_events));
+    window.location.reload();
+    });
+
   // SEARCH FUNCTIONALITY (PLEASE USE THE BUTTON)
 
   var searchQuery = new URLSearchParams(window.location.search);
-  var searchTags = (searchQuery.get('tags')).split(" ");
+  var searchString = searchQuery.get('tags');
+  var searchTags;
+  if(searchString && searchString.indexOf(" ") == -1) {
+    searchTags = (searchString).split(" ");
+  }
+  else {
+    searchTags = [searchString];
+  }
 
   var eventSearchSource = $("#event-card-template").html();
   var orgSearchSource = $("#org-card-template").html();
