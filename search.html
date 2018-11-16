@@ -85,19 +85,43 @@
 			</div>
 		</nav>
 		
+		<script id="org-card-template" type="text/x-handlebars-template">
+				<div class="card" style="min-width: 18rem;">
+					<a href="./orgs/{{shortName}}.html">
+						<img class="card-img-top" src="./img/{{coverPhoto}}" alt="{{fullName}} Photo">
+					</a>
+					<div class="card-body">
+						<h5 class="card-title">{{fullName}}</h5>
+						<h6 class="card-subtitle mb-2 text-muted">{{category}}</h6>
+						<!--<p class="card-text"></p>-->
+					</div>
+				</div>
+			</script>
+			<script id="event-card-template" type="text/x-handlebars-template">
+				<div class="card" style="min-width: 18rem; ">
+					<div class="card-body">
+						<h5 class="card-title">{{name}}</h5>
+						<h6 class="card-title">{{hostOrg}}</h6>
+						<h6 class="card-subtitle mb-2 text-muted">{{date}}</h6>
+						<!--<p class="card-text"></p>-->
+						<a href="./event.html?id={{id}}" class="btn btn-primary">Details</a>
+					</div>
+				</div>
+			</script>
+
 		<div class="container search">
-			<h3>Orgs</h3>
-			<div id="org-search"></div>
-			<h3>Events</h3>
-			<div id="event-search"></div>
+			<h4>Orgs</h4>
+			<div class="card-deck" id="org-search-deck" style="display: inline-flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; width: 100%;"></div>
+			<h4>Events</h4>
+			<div class="card-deck" id="event-search-deck" style="display: inline-flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; width: 100%;"></div>
 		</div>
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-		<script src="js/handlebars-v4.0.11.js"></script>
-		<script src="js/hone.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
+		<script src="./js/handlebars-v4.0.11.js"></script>
+		<script src="./js/hone.js"></script>
 	</body>
 </html>

@@ -89,21 +89,21 @@
 			<h3>What are you interested in?</h3>
 
 			<script id="tag-presel-template" type="text/x-handlebars-template">
-				<label class="btn btn-secondary btn-lg mb-1 active"><input type="checkbox" name="options" id="option{{id}}" checked autocomplete="off">{{tag}}</label>
+				<label id="{{tag}}" class="btn btn-secondary btn-lg mb-1 active"><input type="checkbox" name="options" checked autocomplete="off">{{tag}}</label>
 			</script>
 			<script id="tag-unsel-template" type="text/x-handlebars-template">
-				<label class="btn btn-secondary btn-lg mb-1"><input type="checkbox" name="options" id="option{{id}}" autocomplete="off">{{tag}}</label>
+				<label id="{{tag}}" class="btn btn-secondary btn-lg mb-1"><input type="checkbox" name="options" autocomplete="off">{{tag}}</label>
 			</script>
 
-			<div id= "tags-div" class="btn-group-toggle flex-wrap" data-toggle="buttons"></div>
+			<div id="tags-div" class="btn-group-toggle flex-wrap" data-toggle="buttons"></div>
 
-			<button type="submit" class="btn btn-primary float-right btn-lg mt-3">Save Tags</button>
+			<button id="tag-save-btn" type="submit" class="btn btn-primary float-right btn-lg mt-3">Save Tags</button>
 
 		</div>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="./js/bootstrap.min.js"></script>
 		<script src="./js/handlebars-v4.0.11.js"></script>
 		<script src="./js/hone.js"></script>
 	</body>

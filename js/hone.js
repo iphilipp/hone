@@ -1,28 +1,28 @@
 //fake databases
 var tagList = [
-  {"tag": "asian"},
-  {"tag": "business"},
-  {"tag":"communication"},
-  {"tag": "community"},
-  {"tag": "cultural"},
-  {"tag": "design"},
-  {"tag": "engineering"},
-  {"tag": "food"},
-  {"tag": "fraternity"},
-  {"tag": "fundraiser"},
-  {"tag": "gbm"},
-  {"tag": "greek"},
-  {"tag": "medical"},
-  {"tag": "men"},
-  {"tag": "music"},
-  {"tag": "photography"},
-  {"tag": "political"},
-  {"tag": "pre-professional"},
-  {"tag": "real-estate"},
-  {"tag": "service"},
-  {"tag": "social"},
-  {"tag": "sorority"},
-  {"tag": "women"},
+  {"id": 0, "tag": "asian"},
+  {"id": 1, "tag": "business"},
+  {"id": 2, "tag":"communication"},
+  {"id": 3, "tag": "community"},
+  {"id": 4, "tag": "cultural"},
+  {"id": 5, "tag": "design"},
+  {"id": 6, "tag": "engineering"},
+  {"id": 7, "tag": "food"},
+  {"id": 8, "tag": "fraternity"},
+  {"id": 9, "tag": "fundraiser"},
+  {"id": 10, "tag": "gbm"},
+  {"id": 11, "tag": "greek"},
+  {"id": 12, "tag": "medical"},
+  {"id": 13, "tag": "men"},
+  {"id": 14, "tag": "music"},
+  {"id": 15, "tag": "photography"},
+  {"id": 16, "tag": "political"},
+  {"id": 17, "tag": "pre-professional"},
+  {"id": 18, "tag": "real-estate"},
+  {"id": 19, "tag": "service"},
+  {"id": 20, "tag": "social"},
+  {"id": 21, "tag": "sorority"},
+  {"id": 22, "tag": "women"}
 ];
 
 var eventList = [
@@ -129,7 +129,7 @@ $(document).ready(function() {
     login_status = "false";
   }
   else {
-    if(login_status = "true") {
+    if(login_status == "true") {
       localStorage.setItem("loginStatus", "true");
       login_status = "true";
     }
@@ -175,14 +175,18 @@ $(document).ready(function() {
   // THIS PART SHOULD POPULATE THE FRONT PAGE WITH EVENTS AND ORGS BASED ON SELECTED TAGS
 
   var filtered_orgs, filtered_events;
-  var my_tags = localStorage.getItem("myTags");
+  var my_tags = JSON.parse(localStorage.getItem("myTags"));
   var matchTags = function(oe) {  //oe = org | event
     var oe_tag_list = oe.tags;
+    //console.log(oe_tag_list);
     for(var i = 0; i < oe_tag_list.length; i++) {
       for(var j = 0; j < my_tags.length; j++) {
-        return oe_tag_list[i] == my_tags[i].tag;
+        if(oe_tag_list[i] == my_tags[j].tag) {
+          return true;
+        }
       }
     }
+    return false;
   };
   if ((login_status == "true") && my_tags) {
     filtered_orgs = orgList.filter(matchTags);
@@ -227,16 +231,20 @@ $(document).ready(function() {
 
     var event_div = $("#event-deck");
     var past_event_div = $("#past-event-deck");
+    var d = new Date();
     for(var i = 0; i < chrono_events.length; i++){
-      
-      var html = template(chrono_events[i]);
-      event_div.append(html);
+      if(chrono_events[i].date > (d.toJSON()).substring(0,16)) {
+        var html = template(chrono_events[i]);
+        event_div.append(html);
+      }
+      else {
+        var html = templatePast(chrono_events[i]);
+        past_event_div.append(html);
+      }
     }
   }
 
-
-  // THIS PART SHOULD ALLOW YOU TO SELECT WHICH TAGS YOU WANT TO SORT WITH IN YOUR PROFILE
-  // LOCALSTORAGE PART OF THIS NOT YET IMPLEMENTED
+  // THIS PART ALLOWS YOU TO SELECT WHICH TAGS YOU WANT TO SORT WITH IN YOUR PROFILE
 
   if(my_tags){  //if any preferences selscted
     var btn0Source = $("#tag-unsel-template").html();
@@ -252,9 +260,11 @@ $(document).ready(function() {
             tags_div.append(html);
             break;
           }
+          if(j == my_tags.length-1) {
+            var html = template0(tagList[i]);
+            tags_div.append(html);
+          }
         }
-        var html = template0(tagList[i]);
-        tags_div.append(html);
       }
     }
   }
@@ -270,9 +280,7 @@ $(document).ready(function() {
     }
   }
 
-
-
-// THIS PART SHOULD MAKE LOGIN/OUT AND SEARCH AREAS WORK... THEY DON'T RIGHT NOW
+  // THIS PART MAKES LOGIN/OUT AND SEARCH AREAS WORK
 
   // use localStorage to toggle login status
   $("#login-btn").click(function() {
@@ -281,7 +289,7 @@ $(document).ready(function() {
   });
 
   $("#logout-btn").click(function() {
-      console.log("Logout clicked");
+      //console.log("Logout clicked");
       localStorage.setItem("loginStatus", "false");
       login_status = "false";
   });
@@ -293,27 +301,88 @@ $(document).ready(function() {
   });
 
 
+  // THIS PART MAKES TAG SELECTION AND SAVING WORK
+
+  $("#tag-save-btn").click(function(){
+    var new_tags = "[";
+    for(var i = 0; i < tagList.length; i++) {
+      var elnam = "#" + tagList[i].tag;
+      var $elem_name = $(elnam);
+      console.log($elem_name);
+      if( $elem_name.hasClass("active")) {
+        new_tags += "{\"tag\": \"" + tagList[i].tag + "\"}, ";
+        console.log("pushed " + tagList[i].tag);
+      }
+    }
+    new_tags = new_tags.substring(0, new_tags.length - 2) + "]";
+    console.log(new_tags);
+    my_tags = JSON.parse(new_tags);
+    console.log(my_tags);
+    localStorage.setItem("myTags", JSON.stringify(my_tags));
+    console.log(localStorage.getItem("myTags"));
+  });
 
   // FILL GENERIC EVENT TEMPLATE PAGE WITH RELAVENT DATA
+
   var queryParams = new URLSearchParams(window.location.search);
   var eventID = queryParams.get('id');
   var eventData = eventList[eventID];
-  var pgDiv = $("#event-page-div");
-  if(pgDiv && eventData) {
-    var eventTemplate = Handlebars.compile($("#event-page-template").html());
+
+  var eventPageSource = $("#event-page-template").html();
+  var eventPageDNESource = $("#event-dne-page-template").html();
+  var eventPageDiv = $("#event-page-div");
+  if(eventPageSource && eventData) {
+    var eventTemplate = Handlebars.compile(eventPageSource);
     var html = eventTemplate(eventData);
-    pgDiv.append(html);
+    eventPageDiv.append(html);
   }
-  else if(pgDiv && !eventData) {
-    var eventTemplate = Handlebars.compile($("#event-dne-page-template").html());
+  else if(eventPageDNESource) {
+    var eventTemplate = Handlebars.compile(eventPageDNESource);
     var html = eventTemplate(eventData);
-    pgDiv.append(html);
+    eventPageDiv.append(html);
   }
   var pgTagDiv = $("#event-tag-div");
-  if(pgTagDiv) {
-    var tagTemplate = Handlebars.compile($("#event-tag-template").html());
+  var eventTagSource = $("#event-tag-template").html()
+  if(eventTagSource) {
+    var tagTemplate = Handlebars.compile(eventTagSource);
     var html = tagTemplate(eventData);
     pgTagDiv.append(html);
+  }
+
+  // SEARCH FUNCTIONALITY (PLEASE USE THE BUTTON)
+
+  var searchQuery = new URLSearchParams(window.location.search);
+  var searchTags = (searchQuery.get('tags')).split(" ");
+
+  var eventSearchSource = $("#event-card-template").html();
+  var orgSearchSource = $("#org-card-template").html();
+  var eventSearchDiv = $("#event-search-deck");
+  var orgSearchDiv = $("#org-search-deck");
+  if(eventSearchSource && orgSearchSource) {
+    var eventTemplate = Handlebars.compile(eventSearchSource);
+    var orgTemplate = Handlebars.compile(orgSearchSource);
+    for(var i = 0; i < orgList.length; i++) {
+      for(var j = 0; j < (orgList[i].tags).length; j++) {
+        for(var k = 0; k < searchTags.length; k++) {
+          if((orgList[i].tags[j]) == searchTags[k]) {
+            var html = orgTemplate(orgList[i]);
+            orgSearchDiv.append(html);
+            break;
+          }
+        }
+      }
+    }
+    for(var i = 0; i < eventList.length; i++) {
+      for(var j = 0; j < (eventList[i].tags).length; j++) {
+        for(var k = 0; k < searchTags.length; k++) {
+          if((eventList[i].tags[j]) == searchTags[k]) {
+            var html = eventTemplate(eventList[i]);
+            eventSearchDiv.append(html);
+            break;
+          }
+        }
+      }
+    }
   }
   
 });
