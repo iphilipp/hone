@@ -26,7 +26,7 @@ var tagList = [
 ];
 
 var eventList = [
-  {"id": 0, "name": "Make-A-Wish Meet-up", "hostOrg": "Chi Omega", "date": "2018-11-05T12:00", "coverPhoto": "", "tags": ["sorosity", "women", "fundraiser", "greek", "service", "social"], "description": "Meet up with your fellow Chi-Os in order to celebrate Make-A-Wish!"},
+  {"id": 0, "name": "Make-A-Wish Meet-up", "hostOrg": "Chi Omega", "date": "2018-11-05T12:00", "coverPhoto": "", "tags": ["sorority", "women", "fundraiser", "greek", "service", "social"], "description": "Meet up with your fellow Chi-Os in order to celebrate Make-A-Wish!"},
   {"id": 1, "name": "Chapter Meeting", "hostOrg": "Chi Omega", "date": "2018-11-11T18:00", "coverPhoto": "", "tags": ["greek", "gbm", "sorority", "women"], "description": "Monday Meeting for Chi-Os"},
   {"id": 2, "name": "Chi-Olympics", "hostOrg": "Chi Omega", "date": "2018-11-29T14:00", "coverPhoto": "", "tags": ["greek", "service", "sorority", "women", "fundraising"], "description": "Philanthropy event put on by Chi Omega. This event is open to everyone in Greek life and those no in Greek life"},
   {"id": 3, "name": "Rush Week", "hostOrg": "Sigma Phi Epsilon", "date": "2018-10-01T12:00", "coverPhoto": "", "tags": ["fraternity", "greek", "men"], "description": "Rush Week for new members of Sigma Phi Epsilon"},
@@ -384,5 +384,5 @@ $(document).ready(function() {
       }
     }
   }
-  
+
 });
