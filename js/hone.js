@@ -404,7 +404,15 @@ $(document).ready(function() {
 
   var queryParams = new URLSearchParams(window.location.search);
   var eventID = queryParams.get('id');
-  var eventData = eventList[eventID];
+  var eventData; //= eventList[eventID];
+  for(var i = 0; i < eventList.length; i++) {
+    if(eventList[i].id == eventID) {
+      eventData = eventList[i];
+      break;
+    }
+  }
+
+
 
   var eventPageSource = $("#event-page-template").html();
   var eventPageDNESource = $("#event-dne-page-template").html();
