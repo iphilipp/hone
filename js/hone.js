@@ -171,7 +171,6 @@ $(document).ready(function() {
     console.log("profile template loaded");
   }
 
-
   // THIS PART POPULATES THE FRONT PAGE WITH EVENTS AND ORGS BASED ON SELECTED TAGS
 
   var filtered_orgs, filtered_events;
@@ -264,7 +263,21 @@ $(document).ready(function() {
     }
   }
 
+  // THIS PART SHOWS YOUR TAGS ON YOUR PROFILE
+
+  var profileTagDiv = $("#profile-tags-div");
+  var profileTagSource = $("#profile-tag-template").html();
+  if(profileTagSource) {
+    var tagTemplate = Handlebars.compile(profileTagSource);
+    for(var i = 0; i < my_tags.length; i++) {
+      var html = tagTemplate(my_tags[i]);
+      profileTagDiv.append(html);
+    }
+  }
+
   // THIS PART ALLOWS YOU TO SELECT WHICH TAGS YOU WANT TO SORT WITH IN YOUR PROFILE
+
+  $("#saved-msg").hide();
 
   if(my_tags){  //if any preferences selscted
     var btn0Source = $("#tag-unsel-template").html();
@@ -354,6 +367,9 @@ $(document).ready(function() {
     console.log(my_tags);
     localStorage.setItem("myTags", JSON.stringify(my_tags));
     console.log(localStorage.getItem("myTags"));
+
+    $("#saved-msg").fadeIn("fast");
+    $("#saved-msg").fadeOut("slow");
   });
 
   // FILL GENERIC ORG TEMPLATE PAGE WITH RELAVENT DATA
@@ -411,8 +427,6 @@ $(document).ready(function() {
       break;
     }
   }
-
-
 
   var eventPageSource = $("#event-page-template").html();
   var eventPageDNESource = $("#event-dne-page-template").html();
