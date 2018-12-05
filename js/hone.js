@@ -347,6 +347,13 @@ $(document).ready(function() {
     window.location="./search.html?tags="+query;
   });
 
+  $('#search-field').keypress(function(e){
+    if(e.which == 13) {
+      e.preventDefault();
+      $(this).parent().find('button').click();
+    }
+  });
+
 
   // THIS PART MAKES TAG SELECTION AND SAVING WORK
 
