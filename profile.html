@@ -90,12 +90,12 @@
 					<img src="./img/pfp.jpg" class="rounded-circle img-fluid" style="max-width: 30%;">
 					<h3 class="text-center">Leslie Knope</h3>
 
-					<div class="card-deck">
+					<div class="card-deck align-items-center">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-title align-text-bottom">My Tags</h5>
-								<p class="card-text">Change the tags we sort your events by.</p>
-								<a href="./mytags.html" class="btn btn-primary">Change</a>
+								<h5 class="card-title align-text-bottom">My Interests</h5>
+								<div class="text-center"><div id="profile-tags-div" class="flex-wrap"></div></div>
+								<a href="./mytags.html" class="btn btn-primary">Update</a>
 							</div>
 						</div>
 
@@ -107,6 +107,10 @@
 							</div>
 						</div>
 					</div>
+			</script>
+
+			<script id="profile-tag-template" type="text/x-handlebars-template">
+				<a role="button" class="btn btn-secondary mb-1" href="./search.html?tags={{tag}}">{{tag}}</a>
 			</script>
 
 			<script id="logged-out-profile" type="text/x-handlebars-template">
